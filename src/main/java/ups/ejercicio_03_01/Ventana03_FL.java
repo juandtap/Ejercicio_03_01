@@ -18,30 +18,42 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
  */
 public class Ventana03_FL extends JFrame{
     
-    JPanel jpanel;
-    ArrayList<JLabel> jlabelList;
+    private final JPanel jpanelPrincipal;
+    private final ArrayList<JPanel> jpanelList;
+    private final ArrayList<JLabel> jlabelList;
 
     public Ventana03_FL(String titulo, int ancho, int alto, int posX, int posY)  {
-        jpanel = new JPanel();
+        jpanelPrincipal = new JPanel();
+        jpanelList = new ArrayList<>();
         jlabelList = new ArrayList<>();
         this.setTitle(titulo);
         this.setSize(ancho, alto);
         this.setLocation(posX, posY);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setContentPane(jpanel);
-        iniciarComponentes();
+        this.setContentPane(jpanelPrincipal);
+        iniciarComponentesVentana();
         configurarLayout();
     }
     
-    private void iniciarComponentes(){
+    private void iniciarComponentesVentana(){
+       // 5 jpanels y jlabels
         for (int i = 0; i < 5; i++) {
-            jlabelList.add(new JLabel("label"+(i+1)));
-            jpanel.add(jlabelList.get(i));
+            jpanelList.add(new JPanel());
+            jlabelList.add(new JLabel("label "+(i+1)));
+        }
+        
+        
+        // agrego las labels a los jpanels
+        for (int i = 0; i < 5; i++) {
+            jpanelList.get(i).add(jlabelList.get(i));
         }
     }
     
     private void configurarLayout(){
-        jpanel.setLayout(new FlowLayout());
+        jpanelPrincipal.setLayout(new FlowLayout());
+        for (int i = 0; i < 5; i++) {
+            jpanelPrincipal.add(jpanelList.get(i));
+        }
     }
     
 }

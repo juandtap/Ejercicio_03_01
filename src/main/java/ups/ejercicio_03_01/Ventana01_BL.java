@@ -5,7 +5,9 @@
 package ups.ejercicio_03_01;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -39,13 +41,12 @@ public class Ventana01_BL extends JFrame{
         // 5 jpanels y jlabels
         for (int i = 0; i < 5; i++) {
             jpanelList.add(new JPanel());
-            jlabelList.add(new JLabel("label"+(i+1)));
+            jlabelList.add(new JLabel("label "+(i+1)));
         }
-        
         
         // agrego las labels a los jpanels
         for (int i = 0; i < 5; i++) {
-            jpanelList.get(i).add(jlabelList.get(i));
+            jpanelList.get(i).add(jlabelList.get(i));           
         }
     }
     
@@ -56,6 +57,8 @@ public class Ventana01_BL extends JFrame{
         this.jpanelPrincipal.add(jpanelList.get(2),BorderLayout.CENTER);
         this.jpanelPrincipal.add(jpanelList.get(3),BorderLayout.WEST);
         this.jpanelPrincipal.add(jpanelList.get(4),BorderLayout.SOUTH);
+        
+        
     }
     
     
