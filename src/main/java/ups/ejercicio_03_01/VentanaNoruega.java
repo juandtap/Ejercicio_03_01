@@ -6,7 +6,6 @@ package ups.ejercicio_03_01;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.HeadlessException;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
