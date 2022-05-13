@@ -7,9 +7,7 @@ package ups.ejercicio_03_01;
 
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
+import java.awt.HeadlessException;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,53 +17,42 @@ import javax.swing.JPanel;
  *
  * @author diego
  */
-public class Ventana extends JFrame{
-   private JPanel mainJPanel;
-   private final ArrayList<JPanel> jpanelList;
-   private final ArrayList<JLabel> jlabelList;
+public abstract class Ventana extends JFrame{
+   
+    protected final JPanel jpanelPrincipal;
+    protected final ArrayList<JPanel> jpanelList;
+    protected final ArrayList<JLabel> jlabelList;
 
-    public Ventana(String titulo, int ancho, int alto) {
-        this.mainJPanel = new JPanel();
-        this.jlabelList = new ArrayList<>();
-        this.jpanelList = new ArrayList<>();
-        configurarVentana(titulo, ancho, alto);
+    public Ventana(String titulo, int ancho, int alto, int posX, int posY){
         
-    }
-    
-    public final void configurarVentana(String titulo, int ancho, int alto){
+        this.jpanelPrincipal = new JPanel();
+        this.jpanelList = new ArrayList<>();
+        this.jlabelList = new ArrayList<>();
         this.setTitle(titulo);
         this.setSize(ancho, alto);
-        // Posicion en el centro de la pantalla
-        this.setLocationRelativeTo(this);
+        this.setLocation(posX, posY);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setContentPane(this.mainJPanel);
-        this.mainJPanel.setLayout(new BorderLayout(5,0));
+        this.setContentPane(jpanelPrincipal);
+        iniciarComponentesVentana();
+        configurarLayout();
+    }
+    
+    protected void iniciarComponentesVentana(){
+        // 5 jpanels y jlabels
+        for (int i = 0; i < 5; i++) {
+            jpanelList.add(new JPanel());
+            jlabelList.add(new JLabel("label "+(i+1)));
+        }
         
-        this.jpanelList.add(new JPanel());
-        this.jpanelList.add(new JPanel());
-        this.jpanelList.add(new JPanel());
-        this.jpanelList.add(new JPanel());
-        this.jpanelList.add(new JPanel());
-        
-        
-        this.jpanelList.get(0).add(new JLabel("label1"));
-        this.jpanelList.get(1).add(new JLabel("label2"));
-        this.jpanelList.get(2).add(new JLabel("label3"));
-        this.jpanelList.get(3).add(new JLabel("label4"));
-        this.jpanelList.get(4).add(new JLabel("label5"));
-        
-        this.mainJPanel.add(jpanelList.get(0),BorderLayout.NORTH);
-        this.mainJPanel.add(jpanelList.get(1),BorderLayout.EAST);
-        this.mainJPanel.add(jpanelList.get(2),BorderLayout.CENTER);
-        this.mainJPanel.add(jpanelList.get(3),BorderLayout.WEST);
-        this.mainJPanel.add(jpanelList.get(4),BorderLayout.SOUTH);
+        // agrego las labels a los jpanels
+        for (int i = 0; i < 5; i++) {
+            jpanelList.get(i).add(jlabelList.get(i));           
+        }
+    }
+    
+    protected void configurarLayout(){
         
     }
     
-   
     
-    
-    
-   
-   
 }
