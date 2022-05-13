@@ -12,10 +12,9 @@ package ups.ejercicio_03_01;
 public class Ejercicio_03_01 {
 
     public static void main(String[] args) {
-        //var ventana1 = new Ventana("ventana1", 400, 100);
-        //ventana1.setVisible(true);
-        //var ventananoruega = new VentanaNoruega("bandera noruega");
-        //ventananoruega.setVisible(true);
+        
+        
+        
         var ventanaBorderLayout = new Ventana01_BL("Border Layout", 400, 120, 0, 0);
         ventanaBorderLayout.setVisible(true);
         
@@ -24,5 +23,8 @@ public class Ejercicio_03_01 {
         
         var ventanaFlowLayout = new Ventana03_FL("Flow Layout", 400, 100, 700, 0);
         ventanaFlowLayout.setVisible(true);
+        
+        var ventananoruega = new VentanaNoruega("Bandera Noruega", 500, 220, 500,200 );
+        ventananoruega.setVisible(true);
     }
 }
